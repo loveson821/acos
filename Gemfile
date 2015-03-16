@@ -1,7 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'devise'
+gem 'simple_token_authentication', '~> 1.0'
 gem 'pundit'
+gem "wicked_pdf"
+gem 'wkhtmltopdf-binary'
+gem 'bootstrap-sass'
+gem "simple_form", "~> 3.1.0.rc2", github: "plataformatec/simple_form", branch: "master"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
