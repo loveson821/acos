@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :shops
 
   devise_for :accounts
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "api/registrations", :sessions => "api/sessions"}
 
   root 'shops#index'
   # The priority is based upon order of creation: first created -> highest priority.
