@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+  skip_before_action :login_required!
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
 
   # GET /shops

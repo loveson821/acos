@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   resources :shops
 
   devise_for :accounts
-  devise_for :users, :controllers => {:registrations => "api/registrations", :sessions => "api/sessions"}
+  devise_for :users
+  # devise_for :users, :controllers => {:registrations => "api/registrations"}
+
+  namespace :api do
+    devise_scope :user do
+      post "sign_in", to: "sessions#create"
+    end
+  end
 
   root 'shops#index'
   # The priority is based upon order of creation: first created -> highest priority.
