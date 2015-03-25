@@ -5,17 +5,19 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
-    @shops = Shop.all
+    @shops = current_user.shops.all
   end
 
   # GET /shops/1
   # GET /shops/1.json
   def show
+    @shop = current_user.shops.find(params[:id])
+    @products = @shop.products
   end
 
   # GET /shops/new
   def new
-    @shop = Shop.new
+    @shop = current_user.shops.new
   end
 
   # GET /shops/1/edit
@@ -25,7 +27,7 @@ class ShopsController < ApplicationController
   # POST /shops
   # POST /shops.json
   def create
-    @shop = Shop.new(shop_params)
+    @shop = current_user.shops.new(shop_params)
 
     respond_to do |format|
       if @shop.save
@@ -70,6 +72,6 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:name, :address, :phone, :user_id)
+      params.require(:shop).permit(:name, :address, :phone)
     end
 end
