@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ACOS</title>
+  <%= stylesheet_link_tag    'shopping', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'shopping', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container-fluid">
+  <%#= render "common/navbar" %>
+  <%#= notice_message %>
+  <%= yield %>
+</div>
+
+  <%#= render "common/footer" %>
+
+</body>
+</html>

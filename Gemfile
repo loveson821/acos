@@ -12,6 +12,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari' # paginate
+gem 'mysql2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -56,5 +57,10 @@ group :development, :test do
 
   # testing data
   gem 'factory_girl_rails'
+
+  gem 'rspec-rails'
+
+  gem 'faker'
+  gem 'annotate'
 end
 

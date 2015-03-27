@@ -5,14 +5,14 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
-    @shops = current_user.shops.all
+    @shops = current_user.shops.page(params[:page])
   end
 
   # GET /shops/1
   # GET /shops/1.json
   def show
     @shop = current_user.shops.find(params[:id])
-    @products = @shop.products
+    @products = @shop.products.page(params[:page])
   end
 
   # GET /shops/new
