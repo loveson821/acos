@@ -12,6 +12,10 @@
 #
 
 class Product < ActiveRecord::Base
+  include Filterable
+  # scope :price, -> (location_id) { where location_id: location_id }
+  scope :contains, -> (name) { where("name like ?", "%#{name}%")}
+
   paginates_per 10
   mount_uploader :image, ImageUploader
 

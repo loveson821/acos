@@ -1,23 +1,18 @@
-<!-- <section class="cd-gallery">
+<section class="cd-gallery filter-is-visible">
   <ul>
-    <li class="mix color-1 check1 radio2 option3"><img src="img/img-1.jpg" alt="Image 1"></li>
-    <li class="mix color-2 check2 radio2 option2"><img src="img/img-2.jpg" alt="Image 2"></li>
-    <li class="mix color-1 check3 radio3 option1"><img src="img/img-3.jpg" alt="Image 3"></li>
-    <li class="mix color-1 check3 radio2 option4"><img src="img/img-4.jpg" alt="Image 4"></li>
-    <li class="mix color-1 check1 radio3 option2"><img src="img/img-5.jpg" alt="Image 5"></li>
-    <li class="mix color-2 check2 radio3 option3"><img src="img/img-6.jpg" alt="Image 6"></li>
-    <li class="mix color-2 check2 radio2 option1"><img src="img/img-7.jpg" alt="Image 7"></li>
-    <li class="mix color-1 check1 radio3 option4"><img src="img/img-8.jpg" alt="Image 8"></li>
-    <li class="mix color-2 check1 radio2 option3"><img src="img/img-9.jpg" alt="Image 9"></li>
-    <li class="mix color-1 check3 radio2 option4"><img src="img/img-10.jpg" alt="Image 10"></li>
-    <li class="mix color-1 check3 radio3 option2"><img src="img/img-11.jpg" alt="Image 11"></li>
-    <li class="mix color-2 check1 radio3 option1"><img src="img/img-12.jpg" alt="Image 12"></li>
+    <% @products.each do |product| %>
+      <li class="mix color-1 check1 radio2 option3">
+        <span><%= product.name %></span>
+        <span style="float: right"><%= number_to_currency(product.price) %></span>
+        <%= image_tag(product.image_url) %>
+      </li>
+    <% end %>
     <li class="gap"></li>
     <li class="gap"></li>
     <li class="gap"></li>
   </ul>
   <div class="cd-fail-message">No results found</div>
-</section> -->
+</section>
 
 <div class="cd-filter filter-is-visible">
   <form>
@@ -25,7 +20,7 @@
       <h4>Search</h4>
       
       <div class="cd-filter-content">
-        <input type="search" placeholder="Try color-1...">
+        <input name="contains" type="search" placeholder="Try color-1...">
       </div> <!-- cd-filter-content -->
     </div> <!-- cd-filter-block -->
 
@@ -85,8 +80,9 @@
           <label class="radio-label" for="radio3">Choice 3</label>
         </li>
       </ul> <!-- cd-filter-content -->
+      <button type="submit">Search</button>
     </div> <!-- cd-filter-block -->
   </form>
 
-  <a href="#0" class="cd-close">Close</a>
+  <a href="#0" class="cd-close"><i class="fa fa-2x fa-shopping-cart" style="margin-top:10px"></i></a>
 </div> <!-- cd-filter -->
