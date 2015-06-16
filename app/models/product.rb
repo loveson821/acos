@@ -20,4 +20,18 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   belongs_to :shop
+  has_many :line_items
+  has_many :orders, :through => :line_items
+
+  before_destroy :ensure_not_reference_by_any_line_item
+
+  private
+  def ensure_not_reference_by_any_line_item
+    if line_items.isEmpty?
+      return true
+    else
+      errors.add(:base, 'line items present')
+      return false
+    end
+  end
 end

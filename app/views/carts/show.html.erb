@@ -1,0 +1,30 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'carts' %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-7 col-sm-12 text-left">
+  <ul>
+    <li class="row list-inline columnCaptions">
+      <span>QTY</span>
+      <span>ITEM</span>
+      <span>Price</span>
+    </li>
+    <% @cart.line_items.each do |item| %>
+      <li class="row">
+        <span class="quantity"><%= item.quantity %></span>
+        <span class="itemName"><%= item.product.name %></span>
+        <span class="popbtn"><a class="arrow"></a></span>
+        <span class="price"><%= item.product.price %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<%= button_to "Checkout", new_order_path, :method => :get %>
+<%= button_to "Empty cart", @cart, :method => :delete, data: { confirm: 'Are you sure you want to delete this alert?' } %>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

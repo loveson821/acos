@@ -19,6 +19,9 @@
 #
 
 class User < ActiveRecord::Base
+
+  after_create :build_profile
+
   acts_as_token_authenticatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -26,4 +29,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :shops
+  has_one :profile
+  accepts_nested_attributes_for :profile
+
+  private 
+
+  def build_profile
+    Profile.create(:user => self) if self.profile.nil?
+  end
+
 end

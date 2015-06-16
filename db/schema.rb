@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325084538) do
+ActiveRecord::Schema.define(version: 20150612065331) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -64,9 +64,32 @@ ActiveRecord::Schema.define(version: 20150325084538) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.integer  "cart_id",    limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "quantity",   limit: 4, default: 1
+    t.integer  "order_id",   limit: 4
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.text     "address",    limit: 65535
+    t.string   "email",      limit: 255
+    t.string   "pay_type",   limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -76,6 +99,14 @@ ActiveRecord::Schema.define(version: 20150325084538) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "image",      limit: 255
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "phone",      limit: 255
+    t.string   "address",    limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "shops", force: :cascade do |t|

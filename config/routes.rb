@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :orders
+
+  resources :line_items
+
+  resources :carts
+
   resources :products
 
   devise_for :admin_users, ActiveAdmin::Devise.config

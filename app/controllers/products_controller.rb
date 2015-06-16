@@ -2,7 +2,7 @@ class ProductsController < InheritedResources::Base
   layout "shopping"
 
   def index
-    @products = Product.filter(filtering_params(params))
+    @products = Product.filter(filtering_params(params)).page(params[:page])
     # @products = Product.where("name like ?", "%#{params[:name]}%")
   end
 
