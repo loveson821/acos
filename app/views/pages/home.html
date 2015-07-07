@@ -1,0 +1,50 @@
+<section class="promo">
+  <div class="promo-item">
+    <div class="photo">
+      <div class="product">
+        <span><%= @promo.name %></span>
+        <span style="float: right"><%= number_to_currency(@promo.price) %></span>
+        <%= image_tag(@promo.image_url) %>
+        <i class="fa fa fa-shopping-cart addThisItemButton" data-id="<%= @promo.id %>"></i>
+      </div>
+    </div>
+    <div class="detail">
+      <div>
+        words here
+      </div>
+    </div>
+  </div>
+  <div class="promo-item">
+    <div class="photo">
+      <div class="product">
+        <span><%= @promo.name %></span>
+        <span style="float: right"><%= number_to_currency(@promo.price) %></span>
+        <%= image_tag(@promo.image_url) %>
+        <i class="fa fa fa-shopping-cart addThisItemButton" data-id="<%= @promo.id %>"></i>
+      </div>
+    </div>
+    <div class="detail">
+      <div>
+        words here
+      </div>
+    </div>
+  </div>
+    
+</section>
+
+<section class="products gallery">
+  <ul>
+    <% @products.each do |product| %>
+      <li class="product">
+        <span><%= product.name %></span>
+        <span style="float: right"><%= number_to_currency(product.price) %></span>
+        <%= image_tag(product.image_url) %>
+        <i class="fa fa fa-shopping-cart addThisItemButton" data-id="<%= product.id %>"></i>
+      </li>
+    <% end %>
+    <li class="gap"></li>
+    <li class="gap"></li>
+    <li class="gap"></li>
+  </ul>
+  <%= paginate @products %>
+</section>

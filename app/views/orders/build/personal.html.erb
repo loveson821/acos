@@ -1,0 +1,15 @@
+<%= simple_form_for(@order, :url => wizard_path(:personal,order_id: @order.id), :method => :put) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :email %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, value: "Next" %>
+  </div>
+  <%= link_to 'skip', next_wizard_path(order_id: @order.id) %>
+
+<% end %>

@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :shops
+  has_many :orders
   has_one :profile
   accepts_nested_attributes_for :profile
 

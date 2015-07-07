@@ -1,7 +1,8 @@
 class OrdersController < InheritedResources::Base
 
-  include Wicked::Wizard
-  steps :personal, :payment, :review
+  before_action :authenticate_user!
+  after_action :verify_authorized
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def new
     if @cart.line_items.empty?
@@ -9,7 +10,7 @@ class OrdersController < InheritedResources::Base
       return
     end
 
-    @order = Order.new
+    @order = current_user.orders.new
     respond_to do |f|
       f.html
       f.xml { render :xml => @order }
@@ -17,8 +18,8 @@ class OrdersController < InheritedResources::Base
   end
 
   def show
-    @order = Order.find(params[:order_id])
-    render_wizard
+    @order = Order.find(params[:id])
+    authorize @order
   end
 
   def update
@@ -28,8 +29,12 @@ class OrdersController < InheritedResources::Base
   end
 
   def create
-    @order = Order.create
-    redirect_to wizard_path(steps.first, :order_id => @order.id)
+    @order = current_user.orders.create
+    redirect_to order_build_path(@order, Order.form_steps.first)
+  end
+
+  def edit
+    @order = current_user.orders.find(params[:id])
   end
 
   private

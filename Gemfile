@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'devise'
 gem 'simple_token_authentication', '~> 1.0'
-gem 'pundit'
+gem 'pundit' # 權限管理
 gem "wicked_pdf"
 gem 'wkhtmltopdf-binary'
 gem 'bootstrap-sass'

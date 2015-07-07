@@ -1,8 +1,8 @@
-<section class="products cd-gallery filter-is-visible">
-  <%= paginate @products %>
+<section class="products gallery">
+  
   <ul>
     <% @products.each do |product| %>
-      <li class="mix color-1 check1 radio2 option3">
+      <li class="product">
         <span><%= product.name %></span>
         <span style="float: right"><%= number_to_currency(product.price) %></span>
         <%= image_tag(product.image_url) %>
@@ -13,7 +13,7 @@
     <li class="gap"></li>
     <li class="gap"></li>
   </ul>
-  <div class="cd-fail-message">No results found</div>
+  <%= paginate @products %>
 </section>
 
-<%= render "common/searchSidebar" %>
+<%#= render "common/searchSidebar" %>

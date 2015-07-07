@@ -12,6 +12,26 @@
  *
 
  *= require_self
+ *= require products
+ *= require slick.js/slick/slick
+ *= require slick.js/slick/slick-theme
  */
 
 @import "bootstrap";
+
+.navbar-default {
+  background-color: transparent;
+  border: 0px;
+}
+
+.navbar-header {
+  ul {
+    margin-left: 75px;
+    list-style: none;
+  }
+  li {
+    color: red; 
+    float: left;
+    margin-right: 40px;
+  }
+}

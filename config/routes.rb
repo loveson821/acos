@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :orders
+
+  resources :orders do
+    resources :build, only: [:show, :update], controller: 'orders/build'
+  end
 
   resources :line_items
 
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'products#index'
+  root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

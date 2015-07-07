@@ -16,7 +16,7 @@ class Product < ActiveRecord::Base
   # scope :price, -> (location_id) { where location_id: location_id }
   scope :contains, -> (name) { where("name like ?", "%#{name}%")}
 
-  paginates_per 10
+  paginates_per 12
   mount_uploader :image, ImageUploader
 
   belongs_to :shop

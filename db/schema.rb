@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612065331) do
+ActiveRecord::Schema.define(version: 20150617040249) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20150612065331) do
     t.string   "pay_type",   limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "user_id",    limit: 4
   end
 
   create_table "products", force: :cascade do |t|

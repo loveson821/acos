@@ -1,5 +1,5 @@
 class ProductsController < InheritedResources::Base
-  layout "shopping"
+  # layout "shopping"
 
   def index
     @products = Product.filter(filtering_params(params)).page(params[:page])
